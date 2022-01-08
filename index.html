@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Game Warrior Template</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Game Warrior Template">
+	<meta name="keywords" content="warrior, game, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->   
+	<link href="img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/owl.carousel.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/animate.css"/>
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section">
+		<div class="container">
+			<!-- logo -->
+			<a class="site-logo" href="index.html">
+				<img src="img/logo.png" alt="">
+		</a>
+	<div class="user-panel">
+	<div id="searchcolumn">
+    <form id = "search-form">
+    <label style="color: red" for="maxprice">მინიმალური. ფასი:</label>
+    <input type="number" min="30" max="2000" name="minprice" value="{{ minprice }}">
+    <label style="color: red" for="maxprice">მაქსიმალური ფასი:</label>
+    <input type="number" min="30" max="2000" name="maxprice" value="{{ maxprice }}">
+    <button class="searchi" "buttonser" on click="document.getElementById('search-form').submit()">🔍</button>
+    </form>
+			</div>
+			<!-- responsive -->
+			<div class="nav-switch">
+				<i class="fa fa-bars"></i>
+			</div>
+			<!-- site menu -->
+			<nav class="main-menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="review.html">Games</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+
+	<!-- Hero section -->
+	<section class="hero-section">
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item set-bg" data-setbg="img/slider-1.jpg">
+				<div class="hs-text">
+					<div class="container">
+						<h2>The Best <span>Games</span> Out There</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada <br> lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. <br>Suspendisse cursus faucibus finibus.</p>
+						<a href="#" class="site-btn">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="hs-item set-bg" data-setbg="img/slider-2.jpg">
+				<div class="hs-text">
+					<div class="container">
+						<h2>The Best <span>Games</span> Out There</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada <br> lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. <br>Suspendisse cursus faucibus finibus.</p>
+						<a href="#" class="site-btn">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end -->
+
+
+		<div class="latest-news-section">
+	<div class="ln-title">სიახლეები</div>
+		<div class="news-ticker">
+			<div class="news-ticker-contant">
+				<div class="nt-item"> სულ მალე აიწყობა საიტი სადაც დაგირიგდებათ თქვენ თქვენი უსერები პაროლები . </div>
+				<div class="nt-item">ადმინისტრაცია გილოცავთ ახალ 2022 წელს. </div>
+			</div>
+		</div>
+	</div>
+	<!-- Latest news section end -->
+	
+
+        <table class="table" style="color: aqua">
+            <tbody>
+                <tr>
+                    <th>ფოტო</th>
+                    <th>სახელი</th>
+                    <th>ტექსტის დაკოპირება</th>
+					<th>ნივთი</th>
+                    <th>ფასი</th>
+					<th>დრო</th>
+                </tr>
+                {% for listing in listings %}
+                <tr class="listing-row" id="lr-{{ listing.owner_avatar }}-{{ listing.owner_name }}">
+                    <td class="avatar-cell"
+                        onclick="openAvatarFinder('{{ listing.owner_avatar }}', '{{ listing.owner_name }}')"
+                        style="background: url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/{{ listing.owner_avatar }}.jpg') no-repeat;">
+                    </td>
+                    <td class="name-column"><a href="https://steamcommunity.com/search/users/#text={{ listing.owner_name }}&avatar={{ listing.owner_avatar }}"
+                            target="_blank">{{ listing.owner_name }}</a></td>
+                    <td>
+                        <button class="copytexti" onClick="copyTextEN('{{ listing.item_name }}')"><span>EN</span>
+                        </button>
+						<button class="copytexti" onClick="copyTextCN('{{ listing.item_name }}')"><span>CN</span>
+                        </button>
+						<button class="copytexti" onClick="copyTextRU('{{ listing.item_name }}')"><span>RU</span>
+                        </button>
+						</td>
+                    <td>{{ listing.item_name }}</td>
+                    <td>${{ listing.price }}</td>
+					<td>{{ listing.time }}</td>
+                    <!-- <td class="user-count" username="{{ listing.owner_name }}">count</td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+	
+	</div>
+	<div>
+    <script>
+        const VISITED_LINK_DELIMINATOR = ',x,123,,123,x,'
+        const VISITED_LINKS_LS = 'visitedLinks'
+
+        const main = () => {
+            addSubmitListener()
+            styleVisitedListings()
+            // addButtonListener()
+        }
+
+        const copyTextEN = (text) => {
+            const preTextEN = "I'm interested in your items, add me."
+			const ouTextEN = " "
+            const copyTextEN = document.createElement('textArea')
+
+            copyTextEN.value = preTextEN
+            document.body.appendChild(copyTextEN)
+
+            copyTextEN.select()
+            copyTextEN.setSelectionRange(0, 99999)
+
+            document.execCommand('copy')
+            document.body.removeChild(copyTextEN)
+			
+        }
+		
+		const copyTextCN = (text) => {
+            const preTextCN = "我对你的东西感兴趣 加我吧"
+			const ouTextCN = " "
+            const copyTextCN = document.createElement('textArea')
+
+            copyTextCN.value = preTextCN
+            document.body.appendChild(copyTextCN)
+
+            copyTextCN.select()
+            copyTextCN.setSelectionRange(0, 99999)
+
+            document.execCommand('copy')
+            document.body.removeChild(copyTextCN)
+			
+        }
+		
+		const copyTextRU = (text) => {
+            const preTextRU = "Мне интересны ваши вещи, добавляйте меня."
+			const ouTextRU = " "
+            const copyTextRU = document.createElement('textArea')
+
+            copyTextRU.value = preTextRU
+            document.body.appendChild(copyTextRU)
+
+            copyTextRU.select()
+            copyTextRU.setSelectionRange(0, 99999)
+
+            document.execCommand('copy')
+            document.body.removeChild(copyTextRU)
+			
+        }
+
+        const addSubmitListener = () => {
+            var myForm = document.getElementById('search-form');
+            myForm.addEventListener('submit', function () {
+                var allInputs = myForm.getElementsByTagName('input');
+
+                for (var i = 0; i < allInputs.length; i++) {
+                    var input = allInputs[i];
+
+                    if (input.name && !input.value) {
+                        input.name = '';
+                    }
+                }
+            });
+        }
+
+        const openAvatarFinder = (avatar, name) => {
+            addToVisitedLinks(avatar, name)
+			
+        }
+
+        const addToVisitedLinks = (avatar, name) => {
+            let visitedLinks = localStorage.getItem(VISITED_LINKS_LS)
+            let linkId = avatar + '-' + name
+            if (visitedLinks) {
+                visitedLinks = visitedLinks.split(VISITED_LINK_DELIMINATOR)
+            } else {
+                visitedLinks = []
+            }
+
+            if (!visitedLinks.includes(linkId)) {
+                visitedLinks.push(linkId)
+                let linksToSave = '';
+                for (linkId of visitedLinks) {
+                    linksToSave += linkId + VISITED_LINK_DELIMINATOR
+                }
+                localStorage.setItem(VISITED_LINKS_LS, linksToSave.substr(0, linksToSave.length - VISITED_LINK_DELIMINATOR.length))
+                document.getElementById('lr-' + linkId).classList.add('visited')
+            }
+        }
+
+        const styleVisitedListings = () => {
+            visitedLinks = localStorage.getItem(VISITED_LINKS_LS)
+            if (!visitedLinks) {
+                return
+            }
+
+            visitedLinks = visitedLinks.split(VISITED_LINK_DELIMINATOR)
+            for (linkId of visitedLinks) {
+                let elem = document.getElementById('lr-' + linkId)
+                if (elem) {
+                    elem.classList.add('visited')
+                }
+            }
+        }
+
+        const addButtonListener = () => {
+            const btns = document.getElementsByClassName('user-count')
+            for (let btn of btns) {
+                btn.addEventListener('click', () => {
+                    if (btn.innerHTML == 'Wait') {
+                        return
+                    }
+                    btn.innerHTML = 'Wait'
+                    const xhttp = new XMLHttpRequest()
+
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            btn.innerHTML = this.responseText
+                        }
+                    }
+
+                    const username = btn.getAttribute('username')
+                    xhttp.open('GET', './user-count?name=' + username, true)
+                    xhttp.send()
+
+
+                })
+            }
+        }
+
+        const openNewPage = (link) => {
+            window.open(link, '_blank')
+        }
+    </script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.marquee.min.js"></script>
+	<script src="js/main.js"></script>
+    </body>
+
+</html>
+    </body>
+</html>
