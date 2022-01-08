@@ -55,6 +55,7 @@ html,
                 margin: 5px;
             }
 
+
             #main-table .copy-text-button span {
 			font-family: Fantasy;
                 cursor: pointer;
@@ -349,7 +350,7 @@ ol {
 }
 
 .main-menu {
-	float: left;
+	float: center;
 	margin-right: 170px;
 }
 
