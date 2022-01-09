@@ -34,8 +34,8 @@ html,
             #main-table .avatar-cell {
                 background-size: 48px !important;
                 background-position: center !important;
-                height: 48px;
-                width: 48px;
+                height: 448px;
+                width: 248px;
                 padding: 1px;
                 cursor: pointer;
             }
